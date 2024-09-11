@@ -5,7 +5,7 @@ import com.example.booking_movie.dto.response.ResPageDTO;
 import com.example.booking_movie.entity.Movie;
 import com.example.booking_movie.exception.InvalidException;
 import com.example.booking_movie.repository.MovieRepository;
-import com.example.booking_movie.service.IMovieSevice;
+import com.example.booking_movie.service.IMovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class MovieSeviceImpl implements IMovieSevice {
+public class MovieServiceImpl implements IMovieService {
     @Autowired
     MovieRepository movieRepository;
     @Override
@@ -55,5 +55,10 @@ public class MovieSeviceImpl implements IMovieSevice {
         res.setMeta(mt);
         res.setResult(moviePage.getContent());
         return res;
+    }
+
+    @Override
+    public Movie getMovieById(Long id) {
+        return movieRepository.findById(id).orElseThrow();
     }
 }

@@ -1,24 +1,22 @@
 package com.example.booking_movie.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
-@Entity
-@Table(name = "area")
+import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Area {
+@Entity
+@Table(name = "showtime")
+public class ShowTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String location;
-    @OneToMany(mappedBy = "area",fetch = FetchType.LAZY)
-    @JsonIgnore
-    private List<Cinema> cinemaList;
+    private Date startTime;
+    @ManyToOne
+    @JoinColumn(name = "schedule_id")
+    private Schedule schedule;
 }

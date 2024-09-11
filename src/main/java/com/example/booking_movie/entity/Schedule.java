@@ -2,10 +2,11 @@ package com.example.booking_movie.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
-
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -16,6 +17,10 @@ public class Schedule {
     private Long id;
     private String name;
     private Date showDate;
-    private Date startTime;
-    private Date endTine;
+    @ManyToOne
+    @JoinColumn(name = "cinema_id")
+    private Cinema cinema;
+    @ManyToOne
+    @JoinColumn(name = "movie_id")
+    private Movie movie;
 }

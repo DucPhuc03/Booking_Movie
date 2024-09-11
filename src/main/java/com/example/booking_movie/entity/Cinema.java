@@ -16,4 +16,10 @@ public class Cinema {
     private Long id;
     private String name;
     private String address;
+    @ManyToOne
+    @JoinColumn(name = "branch_id")
+    private Branch branch;
+    @ManyToOne
+    @JoinColumn(name = "area_id")
+    private Area area;
 }

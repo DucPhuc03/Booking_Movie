@@ -1,5 +1,6 @@
 package com.example.booking_movie.controller;
 
+import com.example.booking_movie.dto.response.ResBranchDTO;
 import com.example.booking_movie.entity.Branch;
 import com.example.booking_movie.service.impl.BranchServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ public class BranchController {
         return ResponseEntity.ok(branchService.getBranch());
     }
     @GetMapping("/branch/get/{id}")
-    public ResponseEntity<Branch> getBranchById(@PathVariable("id") Long id){
-        return ResponseEntity.ok(branchService.getBranchById(id));
+    public ResponseEntity<List<ResBranchDTO>> getBranchByAreaId(@PathVariable("id") Long id){
+        return ResponseEntity.ok(branchService.getBranchByAreaId(id));
     }
 }

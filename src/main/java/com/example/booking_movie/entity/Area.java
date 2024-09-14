@@ -18,7 +18,16 @@ public class Area {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String location;
+    private int cinema;
     @OneToMany(mappedBy = "area",fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Cinema> cinemaList;
+    @PreUpdate
+    private void updateCinema() {
+        if (cinemaList != null) {
+            this.cinema = cinemaList.size();
+        } else {
+            this.cinema = 0;
+        }
+    }
 }

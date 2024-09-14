@@ -16,4 +16,7 @@ public class Branch {
     private Long id;
     private String name;
     private String logo;
+    @ManyToOne
+    @JoinColumn(name = "area_id")
+    private Area area;
 }

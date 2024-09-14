@@ -19,4 +19,7 @@ public class ShowTime {
     @ManyToOne
     @JoinColumn(name = "schedule_id")
     private Schedule schedule;
+    @ManyToOne
+    @JoinColumn(name = "room_id")
+    private Room room;
 }

@@ -15,7 +15,6 @@ public class Schedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
     private Date showDate;
     @ManyToOne
     @JoinColumn(name = "cinema_id")

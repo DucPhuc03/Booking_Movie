@@ -1,8 +1,11 @@
 package com.example.booking_movie.service.impl;
 
 import com.example.booking_movie.dto.response.ResScheduleDTO;
+import com.example.booking_movie.dto.response.RoomDTO;
+import com.example.booking_movie.dto.response.ShowTimeDTO;
 import com.example.booking_movie.entity.Cinema;
 import com.example.booking_movie.entity.Schedule;
+import com.example.booking_movie.entity.ShowTime;
 import com.example.booking_movie.mapper.CinemaMapper;
 import com.example.booking_movie.mapper.ShowTimeMapper;
 import com.example.booking_movie.repository.CinemaRepository;
@@ -43,10 +46,20 @@ public class ScheduleServiceImpl implements IScheDuleService {
                 item.getId(),
                 item.getShowDate(),
                 item.getMovie(),
-                showTimeMapper.toShowTimeDtos(showTimeRepository.findBySchedule_Id(item.getId()))
+                toShowtimeDTO(showTimeRepository.findBySchedule_Id(item.getId()))
         )).toList();
 
         data.setSchedules(res);
         return data;
+    }
+
+    @Override
+    public List<ShowTimeDTO> toShowtimeDTO(List<ShowTime> showTimes) {
+        List<ShowTimeDTO> res=showTimes.stream().map(item->new ShowTimeDTO(
+                item.getId(),
+                item.getStartTime(),
+                new RoomDTO(item.getRoom().getId(),item.getRoom().getName())
+        )).toList();
+        return res;
     }
 }

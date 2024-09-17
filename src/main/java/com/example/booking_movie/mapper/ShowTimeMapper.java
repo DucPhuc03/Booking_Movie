@@ -8,5 +8,5 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface ShowTimeMapper {
-    List<ShowTimeDTO> toShowTimeDtos(List<ShowTime> showTimes);
+    //List<ShowTimeDTO> toShowTimeDtos(List<ShowTime> showTimes);
 }

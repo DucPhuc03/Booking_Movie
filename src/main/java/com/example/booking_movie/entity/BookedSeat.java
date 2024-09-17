@@ -18,7 +18,5 @@ public class BookedSeat {
     @ManyToOne
     @JoinColumn(name = "showtime_id")
     private ShowTime showTime;
-    @OneToOne
-    @JoinColumn(name = "seat_id")
-    private Seat seat;
+    private Long seatId;
 }

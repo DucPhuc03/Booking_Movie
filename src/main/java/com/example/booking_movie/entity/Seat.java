@@ -18,4 +18,6 @@ public class Seat {
     @ManyToOne
     @JoinColumn(name = "room_id")
     private Room room;
+    private boolean taken;
+    private double price;
 }
